@@ -1,0 +1,2 @@
+class Bulletinboard < ApplicationRecord
+end
