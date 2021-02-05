@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_140929) do
+ActiveRecord::Schema.define(version: 2021_02_05_074146) do
 
   create_table "bulletinboards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "text"
@@ -20,10 +20,12 @@ ActiveRecord::Schema.define(version: 2021_02_03_140929) do
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "text"
     t.string "name"
+    t.text "body"
+    t.bigint "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_posts_on_topic_id"
   end
 
   create_table "thres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -38,4 +40,5 @@ ActiveRecord::Schema.define(version: 2021_02_03_140929) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "posts", "topics"
 end
