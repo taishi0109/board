@@ -5,7 +5,7 @@
   <% end %>
 </ul>
 <h1>トピック新規登録</h1>
-<%= form_for @new_Topic, :url => {:action => 'create'} do |f| %>
+<%= form_for @new_topic, :url => {:action => 'create'} do |f| %>
     <%= f.text_field :title %>
     <%= f.submit %>
 <% end %>
