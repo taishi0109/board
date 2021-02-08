@@ -15,4 +15,10 @@ class TopicsController < ApplicationController
     @newpost = Post.new(topic_id: params[:id])
     @posts = Post.where(topic_id: params[:id])
   end
+
+  def delete
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    redirect_to topics_index_path
+  end
 end
