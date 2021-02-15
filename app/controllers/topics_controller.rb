@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
   def index
-    # @topics = Topic.all
     @new_topic = Topic.new
     @topics = Topic.all.search(params[:title])
   end
