@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all
     @new_topic = Topic.new
+    @topics = Topic.all.search(params[:search])
   end
 
   def create
@@ -20,5 +21,9 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.destroy
     redirect_to topics_index_path
+  end
+
+  def search
+    @topic = Topic.search(params[:keyword])
   end
 end
