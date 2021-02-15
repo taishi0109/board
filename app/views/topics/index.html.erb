@@ -12,3 +12,9 @@
     <%= f.text_field :title %>
     <%= f.submit %>
 <% end %>
+
+<h2>検索</h2>
+<%= form_tag(root_path, method: :get) do %>
+  <%= text_field_tag :title %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
