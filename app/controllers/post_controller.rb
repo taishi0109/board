@@ -1,5 +1,4 @@
 class PostController < ApplicationController
-    
   def create
     @post = Post.new(params[:post].permit(:topic_id, :name, :body))
     @post.save
