@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   root 'topics#index'
-  resources :topics, only: [:index, :show, :new] do
+  resources :topics, only: [:index, :show, :new, :delete, :create] do
     resources :posts, only: [:show, :edit, :update, :create], module: :topics
   end
-
-  post 'topics/create' => 'topics#create'
-  delete 'topics/delete/:id' => 'topics#delete', as: :topic_delete
 
   resources :posts do
     collection do
