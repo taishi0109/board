@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'topics#index'
-  # get 'topics/index'
   resources :topics, only: [:index, :show, :new] do
     resources :posts, only: [:show, :edit, :update, :create], module: :topics
   end

@@ -17,9 +17,6 @@ module Topics
 
       @post.body = params[:content]
       @post.save
-      # redirect_to("/topics/#{params[:topic_id]}")
-      # redirect_to("/topics/#{@post.topic.id}")
-      # redirect_to topic_path(params[:topic_id])
       redirect_to topic_path(@topic)
     end
   end
