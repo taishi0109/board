@@ -1,0 +1,9 @@
+<%# 間違い　→　topic_post_path(@post) %>
+<%= form_tag(topic_post_path(@topic, @post), method: :patch) do %>
+   <div>
+    <textarea name="content">
+      <%= @post.body %>
+    </textarea>
+    <input type="submit"value="保存">
+  </div>
+<% end %>
