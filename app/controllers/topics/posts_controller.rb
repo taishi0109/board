@@ -1,15 +1,16 @@
 module Topics
   class PostsController < ApplicationController
     def create
-      @post = Post.new(params[:post].permit(:topic_id, :name, :body))
+      @post = Post.new(post_params)
       if @post.save
-        redirect_to topic_path(params[:post]['topic_id'])
+        redirect_to topic_path(@post.topic)
       else
         flash[:notice] = @post.errors.full_messages.join('\n')
-        redirect_to topic_path(params[:post]['topic_id'])
+        redirect_to topic_path(@post.topic)
       end
     end
-
+    
+    
     def edit
       @topic = Topic.find(params[:topic_id])
       @post = Post.find(params[:id])
@@ -24,6 +25,12 @@ module Topics
       else
         render 'edit'
       end
+    end
+
+    private
+
+    def post_params
+      params[:post].permit(:topic_id, :name, :body)
     end
   end
 end
