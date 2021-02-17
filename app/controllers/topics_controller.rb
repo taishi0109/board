@@ -1,13 +1,17 @@
 class TopicsController < ApplicationController
   def index
-    @new_topic = Topic.new
+    @topic = Topic.new
     @topics = Topic.all.search(params[:title])
   end
 
   def create
     @topic = Topic.new(params[:topic].permit(:title))
-    @topic.save
-    redirect_to topics_path
+    if @topic.save
+      redirect_to topics_path
+    else
+      flash[:notice] = @topic.errors.full_messages.join('\n')
+      redirect_to topics_path
+    end
   end
 
   def show
