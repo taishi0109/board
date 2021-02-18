@@ -1,8 +1,10 @@
 <h1><%= @topic.title %></h1>
-<% @posts.each_with_index do |post , idx| %>
+<% @posts.each_with_index do |post , idx | %>
   <p>
     <%= "#{idx + 1}. #{post.name} #{post.user_id ? "(#{post.user_id})" : ""}" %>    
     <%= link_to "編集", edit_topic_post_path(@topic, post)%>
+    <div><%= post.created_at.to_s(:datetime) %></div>
+
     <div>
       <%= post.body %>
     </div>
