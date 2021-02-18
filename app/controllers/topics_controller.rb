@@ -16,8 +16,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @posts = @topic.posts
     @newpost = Post.new(topic_id: params[:id])
-    @posts = Post.where(topic_id: params[:id])
   end
 
   def delete

@@ -27,3 +27,19 @@ Metrics/LineLength:
 #'frozen_string_literal: true'を無効
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 30
+
+Metrics/MethodLength:
+  Enabled: false
+  CountComments: false  # count full line comments?
+  Max: 200
+
+Metrics/LineLength:
+  Enabled: false
+  CountComments: false  # count full line comments?
+  Max: 200
+  
