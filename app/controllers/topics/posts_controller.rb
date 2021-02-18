@@ -1,6 +1,5 @@
 module Topics
   class PostsController < ApplicationController
-
     def create
       topic = Topic.find(params[:topic_id])
       @post = topic.posts.new(
@@ -8,7 +7,6 @@ module Topics
         body: post_params[:body],
         user_id: temp_id
       )
-
       if @post.save
         redirect_to topic_path(@post.topic)
       else
