@@ -25,4 +25,8 @@ class TopicsController < ApplicationController
     @topic.destroy
     redirect_to topics_index_path
   end
+
+  def new
+    @topic = Topic.new
+  end
 end

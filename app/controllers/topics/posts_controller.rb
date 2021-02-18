@@ -9,8 +9,7 @@ module Topics
         redirect_to topic_path(@post.topic)
       end
     end
-    
-    
+
     def edit
       @topic = Topic.find(params[:topic_id])
       @post = Post.find(params[:id])
