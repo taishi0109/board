@@ -27,6 +27,6 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @newtopic = Topic.new
+    @topic = Topic.new
   end
 end
