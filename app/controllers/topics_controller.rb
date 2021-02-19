@@ -5,7 +5,10 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(params[:topic].permit(:title))
+    @topic = Topic.new(
+      title: params[:topic].permit(:title),
+      user_id: temp_id
+    )
     if @topic.save
       redirect_to topics_path
     else
@@ -20,13 +23,26 @@ class TopicsController < ApplicationController
     @newpost = Post.new(topic_id: params[:id])
   end
 
-  def delete
+  def destroy
     @topic = Topic.find(params[:id])
+    if @topic.user_id != temp_id
+      flash[:notice] = "削除する権限がありません"
+      @topics = Topic.all
+      render 'index'
+      return
+    end
+
     @topic.destroy
-    redirect_to topics_index_path
+    redirect_to topics_path
   end
 
   def new
     @topic = Topic.new
+  end
+
+  private
+
+  def temp_id
+    session[:temp_id] ||= SecureRandom.alphanumeric(7)
   end
 end

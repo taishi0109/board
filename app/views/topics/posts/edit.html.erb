@@ -1,9 +1,7 @@
-<%= form_tag(topic_post_path(@topic, @post), method: :patch) do %>
-   <div>
-    <textarea name="content">
-      <%= @post.body %>
-    </textarea>
-    <input type="submit"value="保存">
+<%= form_tag(topic_post_path(@topic, @post), method: :patch) do |f| %>
+  <div>
+    <%= text_area_tag :body, @post.body %>
+    <input type="submit"value="更新">
   </div>
 <% end %>
 

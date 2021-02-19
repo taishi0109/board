@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'topics#index'
-  resources :topics, only: [:index, :show, :new, :delete, :create] do
+  resources :topics, only: [:index, :show, :new, :create, :destroy] do
     resources :posts, only: [:show, :edit, :update, :create], module: :topics
   end
 
