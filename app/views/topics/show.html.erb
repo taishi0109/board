@@ -3,14 +3,19 @@
   <p>
     <%= "#{idx + 1}. #{post.name} #{post.user_id ? "(#{post.user_id})" : ""}" %>    
     <%= link_to "編集", edit_topic_post_path(@topic, post)%>
-    <div><%= post.created_at.to_s(:datetime) %></div>
+    
 
     <div>
       <%= post.body %>
     </div>
+    <div><%= post.created_at.to_s(:datetime) %></div>
+    <%= button_to 'いいね', topic_post_likes_path(@topic,post) %>
+    <%= flash[:notice] %>
+    <%= post.likes.count %>
+
+
   </p>
 <% end %>
-
 <h3>新規書き込み</h3>
 <%= form_for @newpost, :url => topic_posts_path(@topic), method: :post do |f| %>
   <p>お名前</p>
