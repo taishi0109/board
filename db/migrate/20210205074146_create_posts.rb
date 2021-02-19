@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.references :topic, null: false, foreign_key: true
 
       t.timestamps
+      t.string :user_id
     end
   end
 end

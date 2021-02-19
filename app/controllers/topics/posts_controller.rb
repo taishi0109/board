@@ -23,7 +23,13 @@ module Topics
     def update
       @topic = Topic.find(params[:topic_id])
       @post = Post.find_by(id: params[:id])
-      @post.body = params[:content]
+      @post.body = params[:body]
+      if @topic.user_id != temp_id
+        flash[:notice] = "編集する権限がありません"
+        @posts = @topic.posts
+        render 'edit'
+        return
+      end
       if @post.save
         redirect_to topic_path(@topic)
       else
