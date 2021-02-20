@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
   root 'topics#index'
   resources :topics, only: [:index, :show, :new, :create, :destroy] do
-    resources :posts, only: [:show, :edit, :update, :create], module: :topics
-  end
+    resources :posts, only: [:show, :edit, :update, :create], module: :topics do
+      post :likes, to: 'posts/likes#create'
 
-  resources :posts do
-    collection do
-      get 'search'
+      collection do
+        get 'search'
+      end
     end
   end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
