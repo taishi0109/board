@@ -4,6 +4,15 @@
     <input type="submit"value="更新">
   </div>
 <% end %>
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+
+<%= link_to 'http://localhost:3000/' do %>
+  <button>HOME</button>
+<% end %>
+
+
 
 <% @post.errors.full_messages.each do |message| %>
   <%= message%>

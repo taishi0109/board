@@ -3,7 +3,7 @@ module Topics
     class LikesController < ApplicationController
       def create
         @post = Post.find(params[:post_id])
-				@alreadylike = @post.likes.find_by(ip: request.remote_ip)
+        @alreadylike = @post.likes.find_by(ip: request.remote_ip)
         if @alreadylike
           redirect_back(fallback_location: root_path)
           flash[:notice] = "すでにいいねしています"
