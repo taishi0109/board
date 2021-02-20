@@ -1,3 +1,4 @@
+<% breadcrumb :edit %>
 <%= form_tag(topic_post_path(@topic, @post), method: :patch) do |f| %>
   <div>
     <%= text_area_tag :body, @post.body %>
