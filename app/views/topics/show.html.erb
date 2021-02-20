@@ -3,8 +3,6 @@
   <p>
     <%= "#{idx + 1}. #{post.name} #{post.user_id ? "(#{post.user_id})" : ""}" %>    
     <%= link_to "編集", edit_topic_post_path(@topic, post)%>
-    
-
     <div>
       <%= post.body %>
     </div>
@@ -35,3 +33,4 @@
   <button>戻る</button>
 <% end %>
 
+<%= will_paginate @posts %>

@@ -10,6 +10,7 @@
   <% @topics.each do |topic| %>
     <li>
       <%= link_to topic.title, topic_path(topic.id) %>
+      <%= topic.posts.count %>
       <%= link_to '[削除]', topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
     </li>
   <% end %>
