@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(
-      title: params[:topic].permit(:title),
+      title: params[:topic]["title"],
       user_id: temp_id
     )
     if @topic.save

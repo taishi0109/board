@@ -3,7 +3,8 @@
 <h2>検索</h2>
 <%= form_tag(root_path, method: :get) do %>
   <%= text_field_tag :title %>
-  <%= submit_tag 'Search', name: nil %>
+  <%# <%= submit_tag 'Search', name: nil %>
+  <button class="btn btn-outline-primary btn-sm" type="submit">Search</button>
 <% end %>
 <%= link_to 'トピック新規登録', '/topics/new' %>
 
@@ -13,7 +14,7 @@
     <li>
       <%= link_to topic.title, topic_path(topic.id) %>
       <%= topic.posts.count %>
-      <%= link_to '[削除]', topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+      <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
     </li>
   <% end %>
 </ul>
