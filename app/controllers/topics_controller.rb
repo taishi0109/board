@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @posts = @topic.posts
     @newpost = Post.new(topic_id: params[:id])
-    @posts = @posts.paginate(page: params[:page], per_page: 5)
+    @posts = @posts.paginate(page: params[:page], per_page: 1000)
   end
 
   def destroy
