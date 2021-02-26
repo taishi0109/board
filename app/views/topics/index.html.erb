@@ -5,9 +5,10 @@
   <% breadcrumb :root %>
   <h4>検索</h4>
   <%= form_tag(root_path, method: :get) do %>
-    <%= text_field_tag :title %>
-    <%# <%= submit_tag 'Search', name: nil %>
-    <button class="btn btn-outline-primary btn-sm" type="submit">Search</button>
+    <%= text_field_tag :title, params[:title], placeholder: "トピックネーム入力" %>
+    <%= submit_tag 'Search', name: nil %>
+    <i class="fas fa-search"></i>
+    <%# <button class="btn btn-outline-primary btn-sm" type="submit">Search</button> %>
   <% end %>
   <%= link_to 'トピック新規登録', '/topics/new' %>
 
