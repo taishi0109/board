@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :topic
   validates :body, { presence: true, length: { maximum: 150 } }
+  validates :name, { length: { maximum: 15 } }
   has_many :likes, dependent: :destroy
   before_create :test_before_create
 

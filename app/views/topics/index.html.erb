@@ -1,23 +1,43 @@
-<% breadcrumb :root %>
-
-<h2>検索</h2>
-<%= form_tag(root_path, method: :get) do %>
-  <%= text_field_tag :title %>
-  <%# <%= submit_tag 'Search', name: nil %>
-  <button class="btn btn-outline-primary btn-sm" type="submit">Search</button>
-<% end %>
-<%= link_to 'トピック新規登録', '/topics/new' %>
-
-<h1>トピック一覧</h1>
-<ul>
-  <% @topics.each do |topic| %>
-    <li>
-      <%= link_to topic.title, topic_path(topic.id) %>
-      <%= topic.posts.count %>
-      <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
-    </li>
+<div class="container">
+  <div class="container-fluid img-hidden">
+    <img src="https://cdn.pixabay.com/photo/2016/08/10/14/54/cat-1583522__480.png" class="img-fluid" alt="...">
+  </div>
+  <% breadcrumb :root %>
+  <h4>検索</h4>
+  <%= form_tag(root_path, method: :get) do %>
+    <%= text_field_tag :title %>
+    <%# <%= submit_tag 'Search', name: nil %>
+    <button class="btn btn-outline-primary btn-sm" type="submit">Search</button>
   <% end %>
-</ul>
+  <%= link_to 'トピック新規登録', '/topics/new' %>
+
+  <h1>トピック一覧</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>トピック</th>
+        <th>レス</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @topics.each do |topic| %>
+        <tr> 
+          <th style="width:60%">
+            <%= link_to topic.title, topic_path(topic.id) %>
+          </th>
+          <th>
+            <%= [topic.posts.count] %>
+          </th>
+          <th class="btn btn-outline-danger btn-sm" style="width:30%">
+            <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<footer class="footer">Fちゃんねる</footer>
 
 <% @topic.errors.full_messages.each do |message|%>
   <%= message%>
